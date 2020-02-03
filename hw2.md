@@ -7,20 +7,20 @@ output:
     keep_md: yes
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, comment = NA, error=TRUE)
-```
+
 
 ## Task 3
 
-```{r constructor}
+
+```r
 myclass <- function(x){
   stopifnot(length(x) == 4)
   structure(x, class = "myarray")
 }
 ```
 
-```{r validator}
+
+```r
 mycheck <- function(x){
   #stopifnot(is.integer(x)==TRUE)
   #stopifnot(sum(x)>0)
@@ -34,7 +34,8 @@ mycheck <- function(x){
 }
 ```
 
-```{r helper}
+
+```r
 myhelper <- function(x){
   if(length(x)==4 & mycheck(x) == "all good"){
     myclass(x)
@@ -47,12 +48,53 @@ myhelper <- function(x){
 }
 ```
 
-```{r examples}
+
+```r
 myclass(1:4)
+```
+
+```
+[1] 1 2 3 4
+attr(,"class")
+[1] "myarray"
+```
+
+```r
 mycheck(c(1.1,1.2,1.3,2))
+```
+
+```
+[1] "not good"
+```
+
+```r
 myhelper(c(1.1,1.2,1.3,2))
+```
+
+```
+[1] 1 1 1 2
+attr(,"class")
+[1] "myarray"
+```
+
+```r
 myhelper(c(1.1,1.2,1.3,2,2.1,2.2))
+```
+
+```
+[1] 1 1 1 2
+attr(,"class")
+[1] "myarray"
+```
+
+```r
 myhelper(1:4)
+```
+
+```
+[1] 1 2 3 4
+attr(,"class")
+[1] "myarray"
 ```
 
 ## Task 4
