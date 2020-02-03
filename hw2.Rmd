@@ -18,6 +18,17 @@ myclass <- function(x){
   stopifnot(length(x) == 4)
   structure(x, class = "myarray")
 }
+
+myprint <- function(x){
+  UseMethod("myprint")
+}
+myprint.default <- function(x){
+  cat("no print")
+}
+
+myprint.myarray <- function(x){
+  cat(x)
+}
 ```
 
 ```{r validator}
@@ -53,6 +64,8 @@ mycheck(c(1.1,1.2,1.3,2))
 myhelper(c(1.1,1.2,1.3,2))
 myhelper(c(1.1,1.2,1.3,2,2.1,2.2))
 myhelper(1:4)
+myprint(myclass(1:4))
+myprint(1:4)
 ```
 
 ## Task 4

@@ -373,6 +373,17 @@ summary {
 <pre class="r"><code>myclass &lt;- function(x){
   stopifnot(length(x) == 4)
   structure(x, class = &quot;myarray&quot;)
+}
+
+myprint &lt;- function(x){
+  UseMethod(&quot;myprint&quot;)
+}
+myprint.default &lt;- function(x){
+  cat(&quot;no print&quot;)
+}
+
+myprint.myarray &lt;- function(x){
+  cat(x)
 }</code></pre>
 <pre class="r"><code>mycheck &lt;- function(x){
   #stopifnot(is.integer(x)==TRUE)
@@ -413,6 +424,10 @@ attr(,&quot;class&quot;)
 <pre><code>[1] 1 2 3 4
 attr(,&quot;class&quot;)
 [1] &quot;myarray&quot;</code></pre>
+<pre class="r"><code>myprint(myclass(1:4))</code></pre>
+<pre><code>1 2 3 4</code></pre>
+<pre class="r"><code>myprint(1:4)</code></pre>
+<pre><code>no print</code></pre>
 </div>
 <div id="task-4" class="section level2">
 <h2>Task 4</h2>

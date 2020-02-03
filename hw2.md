@@ -17,6 +17,17 @@ myclass <- function(x){
   stopifnot(length(x) == 4)
   structure(x, class = "myarray")
 }
+
+myprint <- function(x){
+  UseMethod("myprint")
+}
+myprint.default <- function(x){
+  cat("no print")
+}
+
+myprint.myarray <- function(x){
+  cat(x)
+}
 ```
 
 
@@ -95,6 +106,22 @@ myhelper(1:4)
 [1] 1 2 3 4
 attr(,"class")
 [1] "myarray"
+```
+
+```r
+myprint(myclass(1:4))
+```
+
+```
+1 2 3 4
+```
+
+```r
+myprint(1:4)
+```
+
+```
+no print
 ```
 
 ## Task 4
