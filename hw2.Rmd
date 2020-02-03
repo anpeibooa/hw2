@@ -15,20 +15,37 @@ knitr::opts_chunk$set(echo = TRUE, comment = NA)
 
 ```{r constructor}
 myclass <- function(x){
-  
+  stopifnot(length(x) == 4, "incorrect length")
+  structure(x, class = "myarray")
 }
 ```
 
 ```{r validator}
-
+mycheck <- function(x){
+  stopifnot(is.integer(x)==1, "input is not integer")
+  stopifnot(sum(x)>0, "sum is too small")
+  return ("all good")
+}
 ```
 
 ```{r helper}
-
+myhelper <- function(x){
+  if(length(x)==4 || mycheck(x) == "all good"){
+    mynewclass <- myclass(x)
+  }
+  else{
+    newx <- abs(round(x[1:4], 0))
+    mynewclass <- myclass(newx)
+  return (mynewclass)
+  }
+}
 ```
 
 ```{r examples}
-
+myclass(1:4)
+mycheck(1.1,1.2,1.3,2)
+myhelper(1.1,1.2,1.3,2)
+myhelper(1:4)
 ```
 
 ## Task 4
